@@ -5,9 +5,22 @@ $line-height: $font-size * 1.5;
   font-family: "Typicons";
   src: url('/typicons-regular-webfont.woff') format('woff');
 }
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'), url('/ptsans.woff') format('woff');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('PT Sans Bold'), local('PTSans-Bold'), url(ptsans-bold.woff) format('woff');
+}
 
 html { 
-  font-family: Helvetica;
+  font-family: "PT Sans";
   font-size: $font-size;
+  font-weight:400;
   line-height: $line-height;
 }

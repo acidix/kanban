@@ -1,7 +1,7 @@
 # Each project square in the kanban is represented by an instance of this class.
 class Project
   # Where you store the sqlite db
-  DATABASE_LOCATION = File.join(ENV["HOME"], ".kb/test.db")
+  DATABASE_LOCATION = File.join(ENV["HOME"], "tmp/of.db")
 
   # The project's name
   attr_accessor :name

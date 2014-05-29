@@ -48,7 +48,7 @@ class Kanban < Sinatra::Base
 
   get '/refresh' do
     # Replace with whatever script you use to refresh your data
-    `#{ENV['HOME']}/bin/kanban-fetch`
+    `#{ENV['HOME']}/bin/kanban-fetch #{ENV['HOME']}/tmp/of.db`
     redirect to '/'
   end
 

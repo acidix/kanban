@@ -27,7 +27,55 @@ function showInactive() {
   button.classList.add("typcn-folder-delete");
   button.onclick = hideInactive;
 }
+// Personal
+function hidePersonal() {
+  var hide = function(el){ el.style.display = "none" };
+  actOnClass("P", hide);
+
+  var button = document.querySelector(".toggle-personal");
+  button.onclick = showPersonal;
+}
+function showPersonal() {
+  var hide = function(el){ el.style.display = "" };
+  actOnClass("P", hide);
+
+  var button = document.querySelector(".toggle-personal");
+  button.onclick = hidePersonal;
+}
+//SAP
+function hideSAP() {
+  var hide = function(el){ el.style.display = "none" };
+  actOnClass("S", hide);
+
+  var button = document.querySelector(".toggle-sap");
+  button.onclick = showSAP;
+}
+function showSAP() {
+  var hide = function(el){ el.style.display = "" };
+  actOnClass("S", hide);
+
+  var button = document.querySelector(".toggle-sap");
+  button.onclick = hideSAP;
+}
+//HPI
+function hideHPI() {
+  var hide = function(el){ el.style.display = "none" };
+  actOnClass("H", hide);
+
+  var button = document.querySelector(".toggle-hpi");
+  button.onclick = showHPI;
+}
+function showHPI() {
+  var hide = function(el){ el.style.display = "" };
+  actOnClass("H", hide);
+
+  var button = document.querySelector(".toggle-hpi");
+  button.onclick = hideHPI;
+}
 
 document.addEventListener("DOMContentLoaded", function(){
   document.querySelector(".toggle-hanging").onclick = hideInactive;
+  document.querySelector(".toggle-personal").onclick = hidePersonal;
+  document.querySelector(".toggle-hpi").onclick = hideHPI;
+  document.querySelector(".toggle-sap").onclick = hideSAP;
 })

@@ -1,6 +1,6 @@
 -if array
   -array.keys.sort.each do |parent|
-    .parent
+    .parent{ class:parent[0]}
       -if array[parent].all?{ |p| ["Deferred", "Waiting on", "Hanging"].include? p.status }
         %h3.hideable.parent-title=parent
       -else
