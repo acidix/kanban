@@ -34,6 +34,8 @@ function hidePersonal() {
 
   var button = document.querySelector(".toggle-personal");
   button.onclick = showPersonal;
+  button.classList.remove("toggle-on");
+  button.classList.add("toggle");
 }
 function showPersonal() {
   var hide = function(el){ el.style.display = "" };
@@ -41,6 +43,8 @@ function showPersonal() {
 
   var button = document.querySelector(".toggle-personal");
   button.onclick = hidePersonal;
+  button.classList.remove("toggle");
+  button.classList.add("toggle-on");
 }
 //SAP
 function hideSAP() {
@@ -49,6 +53,8 @@ function hideSAP() {
 
   var button = document.querySelector(".toggle-sap");
   button.onclick = showSAP;
+  button.classList.remove("toggle-on");
+  button.classList.add("toggle");
 }
 function showSAP() {
   var hide = function(el){ el.style.display = "" };
@@ -56,6 +62,8 @@ function showSAP() {
 
   var button = document.querySelector(".toggle-sap");
   button.onclick = hideSAP;
+  button.classList.remove("toggle");
+  button.classList.add("toggle-on");
 }
 //HPI
 function hideHPI() {
@@ -64,6 +72,8 @@ function hideHPI() {
 
   var button = document.querySelector(".toggle-hpi");
   button.onclick = showHPI;
+  button.classList.remove("toggle-on");
+  button.classList.add("toggle");
 }
 function showHPI() {
   var hide = function(el){ el.style.display = "" };
@@ -71,6 +81,8 @@ function showHPI() {
 
   var button = document.querySelector(".toggle-hpi");
   button.onclick = hideHPI;
+  button.classList.remove("toggle");
+  button.classList.add("toggle-on");
 }
 
 document.addEventListener("DOMContentLoaded", function(){
