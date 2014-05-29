@@ -12,7 +12,7 @@ $wip-width: $useable-width / (1 + 2 / $wip-relative-width);
 
 $project-border: 2px;
 $project-separator: 2px;
-$project-padding: 1px;
+$project-padding: 4px;
 
 $projects-per-wip: 4;
 $projects-per-done: 1;
@@ -26,7 +26,10 @@ $project-width-backburner: ($backburner-width - ($project-border + $project-padd
 body {
   width: $body-width;
   margin: $line-height*2 auto;
-  background: url('/bg.png') repeat;
+ // background: url('/bg.png') repeat;
+ background: url('/imgbg.jpg');
+ background-attachment: fixed;
+  background-size: cover;
 }
 
 section {
@@ -68,6 +71,7 @@ section {
   margin-right:10px;
   padding:3px;
   border: 1px solid black;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
       -ms-border-radius: 3px;

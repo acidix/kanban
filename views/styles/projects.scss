@@ -16,7 +16,11 @@
   padding: $project-padding;
 
   .desc {
-    font-size: 10px;
+    font-size: 14px;
+    font-weight:700;
+    position:absolute;
+    bottom:2px;
+    right:5px;
   }
 
   //------------------------------------------------------------------------------
@@ -37,8 +41,12 @@
   //Symbols that appear in project boxes
   .hanging {
   @include symbol;
-  background-image: url('hanging.png');
+  //background-image: url('hanging.png');
   width: 14px;
+  }
+  .hanging:before {
+  content:"\26a0";
+  font-family: 'entypo', sans-serif;
   }
 
   .deferred {
