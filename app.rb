@@ -48,13 +48,10 @@ class Kanban < Sinatra::Base
 
   get '/refresh' do
     # Replace with whatever script you use to refresh your data
-    `#{ENV['HOME']}/bin/kanban-fetch #{ENV['HOME']}/tmp/of.db`
+    `#{Project::FETCH_PATH Project::DATABASE_LOCATION}`
     redirect to '/'
   end
 
-  get '/styles.css' do
-    scss :styles
-  end
   get '/custom.css' do
     scss :custom
   end

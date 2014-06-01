@@ -2,6 +2,15 @@
 class Project
   # Where you store the sqlite db
   DATABASE_LOCATION = File.join(ENV["HOME"], "tmp/of.db")
+  FETCH_PATH = File.join(ENV["HOME"], "bin/kanban-fetch")
+
+  CUSTOM_COLORS = {
+    "SAP" => "blue",
+    "HPI" => "orange",
+    "Personal" => "green"
+  }
+
+  HIDE_PROJECTS = [ "Single Tasks" , "Someday"]
 
   # The project's name
   attr_accessor :name
@@ -57,14 +66,16 @@ class Project
       database.results_as_hash = true
       database.type_translation = true
       database.execute("SELECT * FROM projects").each do |row|
-        p = Project.new(
-          name:           row["name"],
-          status:         row["status"],
-          days_deferred:  row["daysdeferred"],
-          id:             row["ofid"],
-          num_tasks:      row["num_tasks"]
-        )
-        p.ancestors_string = row["ancestors"]
+        if not HIDE_PROJECTS.include? row["name"] then
+          p = Project.new(
+            name:           row["name"],
+            status:         row["status"],
+            days_deferred:  row["daysdeferred"],
+            id:             row["ofid"],
+            num_tasks:      row["num_tasks"]
+          )
+          p.ancestors_string = row["ancestors"]
+        end
       end
     end
   end

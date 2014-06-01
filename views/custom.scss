@@ -1,5 +1,7 @@
 @import 'styles/typo';
 
+$header-color: #444;
+
 $hpi_color: #dFb5b4;
 $sap_color: #f1e7bc;
 $personal_color: #d0e3f0;
@@ -12,7 +14,7 @@ p, div {
 }
 
 #colheader {
-    background: #000;
+    background: $header-color;
     color: #fff;
 }
 #colheader > #active {
@@ -20,8 +22,8 @@ p, div {
     border-right: 1px solid #fff;
 }
 #colcontent > #active {
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
+    border-left: 1px solid $header-color;
+    border-right: 1px solid $header-color;
 }
 
 
@@ -38,7 +40,11 @@ p, div {
   border-left: 5px solid #eee;
   .breadcrumb {
     margin-bottom:5px;
-    padding:5px;
+    padding:0;
+    font-weight: 700;
+    >.li+.li:before {
+        padding: 0 2px;
+    }
   }
 }
 .bs-callout h4 {
@@ -56,21 +62,21 @@ p, div {
 .HPI {
   background-color: lighten( $hpi_color, 18% );
   border-color: $hpi_color;
-  h4 {
+  li {
     color: darken( $hpi_color, 20% );
   }
 }
 .SAP {
   background-color: lighten( $sap_color, 18% );
   border-color: $sap_color;
-  h4 {
+  li {
     color: darken( $sap_color, 20% );
   }
 }
 .Personal {
   background-color: lighten( $personal_color, 18% );
   border-color: $personal_color;
-  h4 {
+  li {
     color: darken( $personal_color, 20% );
   }
 }

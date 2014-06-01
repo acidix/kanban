@@ -4,15 +4,13 @@
       -if array[parent].all?{ |p| ["Deferred", "Waiting on", "Hanging"].include? p.status }
         %ol{class: 'breadcrumb'}
           -parent.split('|').each do |p|
-            %li
-              %a{href: ''}=p
+            %li=p
       -else
         %ol{class: 'breadcrumb'}
           -parent.split('|').each do |p|
-            %li
-              %a{href: ''}=p
+            %li=p
       -array[parent].each do |p|
-        .project{ style:"background-color:#{@colours[parent]}", class:p.css_class}
+        .bs-callout{ style:"background-color:#{@colours[parent]}", class:p.css_class}
           %p
             %a{href: "omnifocus:///task/#{p.id}"}=p.name
           -if p.board == :active
