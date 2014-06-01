@@ -1,13 +1,19 @@
 -if array
   -array.keys.sort.each do |parent|
-    .parent{ class:parent[0]}
+    .bs-callout{ class:parent.split[0...1].join(' ')}
       -if array[parent].all?{ |p| ["Deferred", "Waiting on", "Hanging"].include? p.status }
-        %h3.hideable.parent-title=parent
+        %ol{class: 'breadcrumb'}
+          -parent.split('|').each do |p|
+            %li
+              %a{href: ''}=p
       -else
-        %h3.parent-title=parent
+        %ol{class: 'breadcrumb'}
+          -parent.split('|').each do |p|
+            %li
+              %a{href: ''}=p
       -array[parent].each do |p|
         .project{ style:"background-color:#{@colours[parent]}", class:p.css_class}
-          %h4
+          %p
             %a{href: "omnifocus:///task/#{p.id}"}=p.name
           -if p.board == :active
             .desc

@@ -24,12 +24,12 @@ $project-width-backburner: ($backburner-width - ($project-border + $project-padd
 
 
 body {
-  width: $body-width;
-  margin: $line-height*2 auto;
- // background: url('/bg.png') repeat;
- background: url('/imgbg.jpg');
- background-attachment: fixed;
-  background-size: cover;
+  max-width: 100%;
+  margin: 0;
+  background: url('/bg.png') repeat;
+ //background: url('/imgbg.jpg');
+ //background-attachment: fixed;
+ //background-size: cover;
 }
 
 section {
@@ -64,7 +64,7 @@ section {
 }
 
 .toggle {
-  float: left;
+  float: right;
   font-size:14px;
   height:20px;
   line-height:20px;

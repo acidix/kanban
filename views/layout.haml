@@ -2,9 +2,14 @@
 %html
   %head
     %title 看板
-    %link{rel: 'stylesheet', type:'text/css', href:'/styles.css'}
-    %link{rel: 'stylesheet', type:'text/css', href:'/typicons.css'}
-    %script{src: "/script.js"}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %link{rel: 'stylesheet', type:'text/css', href:'/vendor/bootstrap/css/bootstrap.min.css'}
+    %link{rel: 'stylesheet', type:'text/css', href:'/vendor/bootstrap-switch/css/bootstrap-switch.min.css'}
+    %link{rel: 'stylesheet', type:'text/css', href:'/custom.css'}
+    %script{src: "/vendor/jquery-1.9.1.min.js"}
+    %script{src: "/vendor/bootstrap/js/bootstrap.min.js"}
+    %script{src: "/vendor/bootstrap-switch/js/bootstrap-switch.min.js"}
+    %script{src: "/app.js"}
     %link{rel: 'icon', href: '/favicon.png'}
   %body
     =yield

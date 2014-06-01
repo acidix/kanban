@@ -1,20 +1,31 @@
 %a{ href:'/refresh',class:"refresh"}
   <span class="typcn typcn-refresh"></span>
 
-%h1 看板 Kanban <span class="toggle-personal toggle-on">Personal</span><span class="toggle-sap toggle-on">SAP</span><span class="toggle-hpi toggle-on">HPI</span>
+%header#top{class: 'navbar navbar-static-top bs-docs-nav'}
+  %div{class: 'container'}
+    %div{class: 'navbar-header'}
+    %a{href: '/', class:'navbar-brand'} 看板 OmniFocus Kanban
+    %nav{class: 'collapse navbar-collapse bs-navbar-collapse', role: 'navigation'}
+      %div{class: 'btn-group navbar-right'}
+        %button{type: 'button', class: 'btn btn-default navbar-btn'} Personal
+        %button{type: 'button', class: 'btn btn-default navbar-btn'} SAP
+        %button{type: 'button', class: 'btn btn-default navbar-btn'} HPI
 
-%section#backburner
-  %h2 Backburner (#{@size[:backburner]})
+%div{class: 'container'}
+  %div#colheader{class: 'row invert'}
+    %div#backburner{class: 'col-md-3'}
+      %h5 Backburner (#{@size[:backburner]})
+    %div#active{class: 'col-md-6 col-active'}
+      %h5 Active (<span class="#{@size[:running] > 5 ? "" : "no"}danger">#{@size[  :running]}</span> | #{@size[:active]}) <span class="glyphicon glyphicon-minus-sign toggle-hanging" style="float:right"></span>
+    %div#completed{class: 'col-md-3'}
+      %h5 Completed (#{@size[:completed]})
+  %div#colcontent{class: 'row'}
+    %div#backburner{class: 'col-md-3'}
+      =haml :'_kanban', :locals => {array: @projects[:backburner], label: "  backburner"}
+    %div#active{class: 'col-md-6 col-active'}
+      =haml :'_kanban', :locals => {array: @projects[:active], label: "active"}
+      %h2 Active (#{@size[:active]})
+    %div#completed{class: 'col-md-3'}
+      =haml :'_kanban', :locals => {array: @projects[:completed], label: "  completed"}
 
-  =haml :'_kanban', :locals => {array: @projects[:backburner], label: "backburner"}
 
-  / Backburner here
-
-%section#wip
-  %h2 Active (<span class="#{@size[:running] > 5 ? "" : "no"}danger">#{@size[:running]}</span> | #{@size[:active]}) <span class="toggle-hanging typcn typcn-folder-delete"></span>
-  =haml :'_kanban', :locals => {array: @projects[:active], label: "active"}
-
-%section#done
-  %h2 Completed (#{@size[:completed]})
-
-  =haml :'_kanban', :locals => {array: @projects[:completed], label: "completed"}

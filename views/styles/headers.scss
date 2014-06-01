@@ -1,8 +1,8 @@
-$h1-size: 29px;
+$h1-size: 14px;
 $header-decrement: 6px;
 
 h1, h2, h3 {
-  color: #333;
+  color: #fff;
   line-height: $line-height*2;
 }
 
@@ -12,9 +12,11 @@ h4 {
 
 h1 {
   font-size: $h1-size;
-  text-align: right;
-  border-bottom: 3px solid #555;
+  text-align: left;
+  border-bottom: 1px solid #555;
   margin-bottom: $line-height;
+  background: #007fb9;
+  margin-left: 10px;
 }
 
 h2 {

@@ -92,7 +92,7 @@ class Project
 
   # Outputs a string of ancestors, separated by the html Right arrow character
   def ancestors_string
-    @ancestors.join(" &rarr; ")
+    @ancestors.join(" | ")
   end
 
   # A space-separated list of classes to add to the project's corresponding html

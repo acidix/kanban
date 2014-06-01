@@ -1,0 +1,76 @@
+@import 'styles/typo';
+
+$hpi_color: #dFb5b4;
+$sap_color: #f1e7bc;
+$personal_color: #d0e3f0;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans';
+}
+p, div {
+    font-family: 'PT Sans';
+}
+
+#colheader {
+    background: #000;
+    color: #fff;
+}
+#colheader > #active {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+#colcontent > #active {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+
+
+
+/* Callouts from bootstrap documentation */
+/* Side notes for calling out things
+-------------------------------------------------- */
+
+/* Base styles (regardless of theme) */
+.bs-callout {
+  margin: 20px 0;
+  padding: 7px 15px 7px 7px;
+  border-left: 5px solid #eee;
+  .breadcrumb {
+    margin-bottom:5px;
+    padding:5px;
+  }
+}
+.bs-callout h4 {
+  margin-top: 0;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+  background-color: #fff;
+}
+
+/* Themes for different contexts */
+.HPI {
+  background-color: lighten( $hpi_color, 18% );
+  border-color: $hpi_color;
+  h4 {
+    color: darken( $hpi_color, 20% );
+  }
+}
+.SAP {
+  background-color: lighten( $sap_color, 18% );
+  border-color: $sap_color;
+  h4 {
+    color: darken( $sap_color, 20% );
+  }
+}
+.Personal {
+  background-color: lighten( $personal_color, 18% );
+  border-color: $personal_color;
+  h4 {
+    color: darken( $personal_color, 20% );
+  }
+}

@@ -23,7 +23,7 @@ class Kanban < Sinatra::Base
     Project.all.group_by(&:board).each do |board, projects|
       @projects[board] = projects.group_by(&:ancestors_string)
     end
-    
+
     # We would like to sort active projects
     @projects[:active].each do |ancestry, project_list|
       @projects[:active][ancestry] = project_list.sort_by{ |p| p.status == "Active" ? 0 : 1 }
@@ -33,7 +33,7 @@ class Kanban < Sinatra::Base
     boards = [:active, :backburner, :completed]
     @size = boards.each_with_object({}){ |board, hsh| hsh[board] = Project.select{ |p| p.board == board }.size }
     @size[:running] = Project.select{ |p| p.status == "Active"}.count
-    
+
     # Auto-colour projects
     lineages = @projects.values.map{ |h| h.keys }.flatten.uniq
     @colours = {}
@@ -54,5 +54,8 @@ class Kanban < Sinatra::Base
 
   get '/styles.css' do
     scss :styles
+  end
+  get '/custom.css' do
+    scss :custom
   end
 end

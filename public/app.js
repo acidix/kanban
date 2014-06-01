@@ -1,0 +1,3 @@
+$( function() {
+    $("[name='SAP']").bootstrapSwitch();
+})
