@@ -37,6 +37,14 @@ p, div {
     background-color: none;
     border-color: none;
 }
+button.btn-inactive {
+  background-color: #eee !important;
+  border-color: #ccc !important;
+}
+.toggle-hanging {
+  cursor: pointer;
+  cursor: hand;
+}
 
 
 
@@ -63,7 +71,7 @@ p, div {
     background: none;
     padding:0;
     font-weight: 700;
-    >.li+.li:before {
+    >li+li:before {
         padding: 0 2px;
     }
   }
@@ -114,6 +122,9 @@ p, div {
                 font-size: 36px;
                 font-weight: 700;
             }
+            >.hanging {
+                color: darken( map-get($colors, #{$context}), 5% );
+            }
         }
     }
     button.btn-#{$context} {
@@ -124,10 +135,5 @@ p, div {
       } @else {
           color: #fafafa;
       }
-    }
-    button.btn-#{$context}-inactive {
-      @extend button.btn-#{$context};
-      background-color: #eee;
-      border-color: #ccc;
     }
 }
