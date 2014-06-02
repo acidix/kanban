@@ -3,11 +3,12 @@ class Project
   # Where you store the sqlite db
   DATABASE_LOCATION = File.join(ENV["HOME"], "tmp/of.db")
   FETCH_PATH = File.join(ENV["HOME"], "bin/kanban-fetch")
+  MAX_PROJECTS = 5
 
   CUSTOM_COLORS = {
-    "SAP" => "blue",
-    "HPI" => "orange",
-    "Personal" => "green"
+    "SAP" => "#d0e3f0",
+    "HPI" => "#dFb5b4",
+    "Personal" => "#f1e7bc"
   }
 
   HIDE_PROJECTS = [ "Single Tasks" , "Someday"]

@@ -51,7 +51,7 @@ function hideSAP() {
   var hide = function(el){ el.style.display = "none" };
   actOnClass("S", hide);
 
-  var button = document.querySelector(".toggle-sap");
+  var button = document.querySelector(".button-SAP");
   button.onclick = showSAP;
   button.classList.remove("toggle-on");
   button.classList.add("toggle");

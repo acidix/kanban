@@ -1,4 +1,4 @@
-require "sinatra"
+require "sinatra/base"
 require "sass"
 require "haml"
 require "sqlite3"
@@ -7,6 +7,9 @@ require "date"
 Dir['./lib/*.rb'].each{ |f| require f }
 
 class Kanban < Sinatra::Base
+
+  set :root, File.dirname(__FILE__)
+
   # Index!
   get '/' do
 
@@ -34,6 +37,8 @@ class Kanban < Sinatra::Base
     @size = boards.each_with_object({}){ |board, hsh| hsh[board] = Project.select{ |p| p.board == board }.size }
     @size[:running] = Project.select{ |p| p.status == "Active"}.count
 
+    maxproj = Project::MAX_PROJECTS
+
     # Auto-colour projects
     lineages = @projects.values.map{ |h| h.keys }.flatten.uniq
     @colours = {}
@@ -48,11 +53,21 @@ class Kanban < Sinatra::Base
 
   get '/refresh' do
     # Replace with whatever script you use to refresh your data
-    `#{Project::FETCH_PATH Project::DATABASE_LOCATION}`
+    `#{Project::FETCH_PATH} #{Project::DATABASE_LOCATION}`
     redirect to '/'
   end
 
-  get '/custom.css' do
-    scss :custom
+
+  get '/css/:stylesheet.css' do |stylesheet|
+    scss :"scss/#{stylesheet}"
   end
+
+  get '/css/dyn/application.css' do
+
+  end
+
+  #get '/custom.css' do
+  #  scss :custom
+  #end
 end
+

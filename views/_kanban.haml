@@ -10,17 +10,16 @@
           -parent.split('|').each do |p|
             %li=p
       -array[parent].each do |p|
-        .bs-callout{ style:"background-color:#{@colours[parent]}", class:p.css_class}
+        .bs-callout{ class:parent.split[0...1].join(' ')}
           %p
             %a{href: "omnifocus:///task/#{p.id}"}=p.name
           -if p.board == :active
-            .desc
-              -if p.status != "Hanging"
-                #{p.num_tasks}
+            -if p.status != "Hanging"
+              .desc #{p.num_tasks}
             -if p.status == "Deferred"
               .deferred=p.days_deferred
             -elsif p.status == "Waiting on"
               .waiting-on
             -elsif p.status == "Hanging"
-              .hanging
+              .hanging{class: 'glyphicon glyphicon-ban-circle'}
       .clear

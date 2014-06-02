@@ -1,0 +1,133 @@
+@import 'typo';
+
+$contexts: SAP, HPI, Personal;
+$colors: (
+  HPI: #dFb5b4,
+  SAP: #d0e3f0,
+  Personal: #f1e7bc
+);
+
+$header-color: #444;
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans';
+}
+p, div {
+    font-family: 'PT Sans';
+}
+
+#colheader {
+    background: $header-color;
+    color: #fff;
+}
+#colheader > #active {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+#colcontent > #active {
+    border-left: 1px solid $header-color;
+    border-right: 1px solid $header-color;
+}
+.danger {
+    font-weight: 700;
+    color: red;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background-color: none;
+    border-color: none;
+}
+
+
+
+
+/* Callouts from bootstrap documentation */
+/* Side notes for calling out things
+-------------------------------------------------- */
+
+.bs-callout > .bs-callout {
+    margin: 2px 0;
+}
+#active > .bs-callout > .bs-callout {
+    width: 49%;
+    display: inline-block;
+}
+
+/* Base styles (regardless of theme) */
+.bs-callout {
+  margin: 20px 0;
+  padding: 7px 15px 7px 7px;
+  border-left: 5px solid #eee;
+  .breadcrumb {
+    margin-bottom:5px;
+    background: none;
+    padding:0;
+    font-weight: 700;
+    >.li+.li:before {
+        padding: 0 2px;
+    }
+  }
+  >.bs-callout {
+    -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+          border-radius: 3px;
+  }
+}
+.bs-callout h4 {
+  margin-top: 0;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+  background-color: #fff;
+}
+
+
+
+/* Themes for different contexts */
+@each $context in $contexts {
+    .#{$context} {
+        background-color: lighten( map-get($colors, #{$context}), 18% );
+        border-color: map-get($colors, #{$context});
+        li {
+            color: darken( map-get($colors, #{$context}), 20% );
+        }
+        > .#{$context} {
+            position: relative;
+            background: map-get($colors, #{$context});
+            border: 0;
+            >p>a {
+                @if lightness(map-get($colors, #{$context})) > lightness(#aaaaaa) {
+                    color: #4a4a4a;
+                } @else {
+                    color: #fafafa;
+                }
+            }
+            >.desc, >.hanging {
+                position: absolute;
+                right: 10px;
+                bottom: -8px;
+                color: darken( map-get($colors, #{$context}), 10% );
+                font-size: 36px;
+                font-weight: 700;
+            }
+        }
+    }
+    button.btn-#{$context} {
+      background-color: map-get($colors, #{$context});
+      border:1px solid darken( map-get($colors, #{$context}), 20%);
+      @if lightness(map-get($colors, #{$context})) > lightness(#aaaaaa) {
+          color: #4a4a4a;
+      } @else {
+          color: #fafafa;
+      }
+    }
+    button.btn-#{$context}-inactive {
+      @extend button.btn-#{$context};
+      background-color: #eee;
+      border-color: #ccc;
+    }
+}

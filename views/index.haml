@@ -6,17 +6,19 @@
     %div{class: 'navbar-header'}
     %a{href: '/', class:'navbar-brand'} 看板 OmniFocus Kanban
     %nav{class: 'collapse navbar-collapse bs-navbar-collapse', role: 'navigation'}
+      %div{class: 'btn-group navbar-left'}
+        %button#refresh{type: 'button', class: 'btn btn-primary navbar-btn'}
+          %i{class: 'glyphicon glyphicon-refresh'}
       %div{class: 'btn-group navbar-right'}
-        %button{type: 'button', class: 'btn btn-default navbar-btn'} Personal
-        %button{type: 'button', class: 'btn btn-default navbar-btn'} SAP
-        %button{type: 'button', class: 'btn btn-default navbar-btn'} HPI
+        -Project::CUSTOM_COLORS.each do |key, array|
+          %button{:id => "btn-#{key}", type: 'button', :class => ['btn btn-default navbar-btn', "btn-#{key}"]} #{key}
 
 %div{class: 'container'}
   %div#colheader{class: 'row'}
     %div#backburner{class: 'col-md-3'}
       %h5 Backburner (#{@size[:backburner]})
     %div#active{class: 'col-md-6 col-active'}
-      %h5 Active (<span class="#{@size[:running] > 5 ? "" : "no"}danger">#{@size[  :running]}</span> | #{@size[:active]}) <span class="glyphicon glyphicon-minus-sign toggle-hanging" style="float:right"></span>
+      %h5 Active (<span class="#{@size[:running] > 5 ? "" : "no"}danger">#{@size[:running]}</span> | #{@size[:active]}) <span class="glyphicon glyphicon-minus-sign toggle-hanging" style="float:right"></span>
     %div#completed{class: 'col-md-3'}
       %h5 Completed (#{@size[:completed]})
   %div#colcontent{class: 'row'}
@@ -24,7 +26,6 @@
       =haml :'_kanban', :locals => {array: @projects[:backburner], label: "  backburner"}
     %div#active{class: 'col-md-6 col-active'}
       =haml :'_kanban', :locals => {array: @projects[:active], label: "active"}
-      %h2 Active (#{@size[:active]})
     %div#completed{class: 'col-md-3'}
       =haml :'_kanban', :locals => {array: @projects[:completed], label: "  completed"}
 
