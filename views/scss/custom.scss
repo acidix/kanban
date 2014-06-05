@@ -25,9 +25,31 @@ p, div {
     border-left: 1px solid #fff;
     border-right: 1px solid #fff;
 }
-#colcontent > #active {
+#colcontent > #active-content {
     border-left: 1px solid $header-color;
     border-right: 1px solid $header-color;
+}
+#backburner > h5 {
+  float:left;
+}
+#backburner > span {
+  margin-top:10px;
+  margin-bottom:10px;
+  float: right;
+}
+#completed > h5 {
+  float:right;
+}
+#completed > span {
+  margin-top:10px;
+  margin-bottom:10px;
+  float: left;
+}
+#backburner.col-md-tiny, #backburner-content.col-md-tiny {
+  float:left;
+}
+#completed.col-md-tiny, #completed-content.col-md-tiny {
+  float:right;
 }
 .danger {
     font-weight: 700;
@@ -56,9 +78,28 @@ button.btn-inactive {
 .bs-callout > .bs-callout {
     margin: 2px 0;
 }
-#active > .bs-callout > .bs-callout {
-    width: 49%;
-    display: inline-block;
+#active-content > .bs-callout > .bs-callout {
+    width: 49.6%;
+    display: inline-table;
+}
+.container-fluid > .row > #active-content.col-md-6 > .bs-callout > .bs-callout {
+    width: 33%;
+}
+.container-fluid > .row > #active-content.col-md-8 > .bs-callout > .bs-callout {
+    width: 24.6%;
+}
+.container-fluid > .row > #active-content.col-md-10 > .bs-callout > .bs-callout {
+    width: 19.7%;
+}
+.container > .row > #active-content.col-md-8 > .bs-callout > .bs-callout {
+  width: 33%;
+}
+.container > .row > #active-content.col-md-10 > .bs-callout > .bs-callout {
+  width: 24.6%;
+}
+.container-fluid > .row > #backburner-content > .bs-callout > .bs-callout , .container-fluid > .row > #completed-content > .bs-callout > .bs-callout {
+    width:49.6%;
+    display: inline-table;
 }
 
 /* Base styles (regardless of theme) */
@@ -114,7 +155,7 @@ button.btn-inactive {
                     color: #fafafa;
                 }
             }
-            >.desc, >.hanging {
+            >.desc, >.hanging, >.deferred {
                 position: absolute;
                 right: 10px;
                 bottom: -8px;
@@ -124,6 +165,12 @@ button.btn-inactive {
             }
             >.hanging {
                 color: darken( map-get($colors, #{$context}), 5% );
+                top: 5px;
+                right: 6px;
+            }
+            >.deferred {
+                right:40px;
+                color: lighten( map-get($colors, #{$context}), 5% );
             }
         }
     }

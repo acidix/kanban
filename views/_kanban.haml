@@ -1,6 +1,6 @@
 -if array
   -array.keys.sort.each do |parent|
-    .bs-callout{ class:parent.split('|').first}
+    .bs-callout{ :class => [ parent.split('|').first, 'persist-state'] }
       -if array[parent].all?{ |p| ["Deferred", "Waiting on", "Hanging"].include? p.status }
         %ol{class: 'breadcrumb'}
           -parent.split('|').each do |p|
