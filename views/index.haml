@@ -7,32 +7,32 @@
     %a{href: '/', class:'navbar-brand'} 看板 OmniFocus Kanban
     %nav{class: 'collapse navbar-collapse bs-navbar-collapse', role: 'navigation'}
       %div{class: 'btn-group navbar-left'}
-        %button#refresh{type: 'button', class: 'btn btn-primary navbar-btn'}
+        %button#refresh{type: 'button', class: 'btn btn-primary navbar-btn', title: 'Refresh data from OmniFocus'}
           %i{class: 'glyphicon glyphicon-refresh'}
-        %button#expand{type: 'button', class: 'btn btn-default navbar-btn', onClick: 'javascript:expandViewport()'}
-          %i#expandicon{class: 'glyphicon glyphicon-resize-full'}
-        %button#reset{type: 'button', class: 'btn btn-default navbar-btn' }
+        %button#reset{type: 'button', class: 'btn btn-default navbar-btn', title: 'Reset viewport' }
           %i#expandicon{class: 'glyphicon glyphicon-floppy-remove'}
+        %button#expand{type: 'button', class: 'btn btn-default navbar-btn', onClick: 'javascript:expandViewport()', title: 'Expand viewport'}
+          %i#expandicon{class: 'glyphicon glyphicon-resize-full'}
       %div{class: 'btn-group navbar-right'}
         -Project::CUSTOM_COLORS.each do |key, array|
           %button{:id => "btn-#{key}", type: 'button', :class => ['btn btn-default navbar-btn persist-state', "btn-#{key}"], onClick: "javascript:toggleItems(\"#{key}\")"} #{key}
 
-%div#main{class: 'container'}
+%div#main{class: 'persist-state container'}
   %div#colheader{class: 'row'}
     %div#backburner{class: 'collapsible persist-state col-md-3'}
       %h5{class: 'persist-state'} Backburner (#{@size[:backburner]})
       %span{class: 'glyphicon glyphicon-indent-right', onclick: 'javascript:toggleSidebar("backburner")'}
-    %div#active{class: 'collapsible persist-state col-md-6 col-active'}
-      %h5{class: 'persist-state'} Active (<span class="#{@size[:running] > 5 ? "" : "no"}danger">#{@size[:running]}</span> | #{@size[:active]}) <span class="glyphicon glyphicon-minus-sign toggle-hanging" onClick="javascript:toggleHanging()" style="float:right"></span>
+    %div#active{class: 'col-md-6 col-active'}
+      %h5{class: 'persist-state'} Active (<span class="#{@size[:running] > Project::MAX_PROJECTS ? "" : "no"}danger">#{@size[:running]}</span> | #{@size[:active]}) <span class="persist-state glyphicon glyphicon-minus-sign toggle-hanging" onClick="javascript:toggleHanging()" style="float:right"></span>
     %div#completed{class: 'collapsible persist-state col-md-3'}
       %h5{class: 'persist-state', style: 'text-align: right'} Completed (#{@size[:completed]})
       %span{class: 'glyphicon glyphicon-indent-left', onclick: 'javascript:toggleSidebar("completed")'}
   %div#colcontent{class: 'row'}
-    %div#backburner-content{class: 'collapsible persist-state col-md-3'}
+    %div#backburner-content{class: 'col-md-3'}
       =haml :'_kanban', :locals => {array: @projects[:backburner], label: "  backburner", colors: Project::CUSTOM_COLORS}
-    %div#active-content{class: 'collapsible persist-state col-md-6 col-active'}
+    %div#active-content{class: 'col-md-6 col-active'}
       =haml :'_kanban', :locals => {array: @projects[:active], label: "active", colors: Project::CUSTOM_COLORS}
-    %div#completed-content{class: 'collapsible persist-state col-md-3'}
+    %div#completed-content{class: 'col-md-3'}
       =haml :'_kanban', :locals => {array: @projects[:completed], label: "  completed", colors: Project::CUSTOM_COLORS}
 
 

@@ -67,17 +67,36 @@ function expandViewport() {
   $('#expandicon').toggleClass('glyphicon-resize-full glyphicon-resize-small', 400);
 }
 
-$.ow.persistState.elementPersistence['div'] = {
+$.ow.persistState.elementPersistence['div.collapsible'] = {
     saveState: function($el) {
-        return { classes: $el.attr('class'),
-                 hidden: $el.is(':hidden') };
+        return { hidden: $el.hasClass('col-md-1') };
     },
     restoreState: function($el, state) {
         if(!state) return;
-        $el.removeClass();
-        $el.addClass(state.classes);
-        if (state.hidden)
-          $el.css('visibility', 'hidden');
+        if ( state.hidden )
+          toggleSidebar($el.attr('id'));
+    }
+};
+
+$.ow.persistState.elementPersistence['div#main'] = {
+    saveState: function($el) {
+        return { expanded: $el.hasClass('container-fluid') };
+    },
+    restoreState: function($el, state) {
+        if(!state) return;
+        if ( state.expanded )
+          expandViewport();
+    }
+};
+
+$.ow.persistState.elementPersistence['span.toggle-hanging'] = {
+    saveState: function($el) {
+        return { hidden: $el.hasClass('glyphicon-plus-sign') };
+    },
+    restoreState: function($el, state) {
+        if(!state) return;
+        if ( state.hidden )
+          toggleHanging();
     }
 };
 

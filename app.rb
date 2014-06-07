@@ -37,8 +37,6 @@ class Kanban < Sinatra::Base
     @size = boards.each_with_object({}){ |board, hsh| hsh[board] = Project.select{ |p| p.board == board }.size }
     @size[:running] = Project.select{ |p| p.status == "Active"}.count
 
-    maxproj = Project::MAX_PROJECTS
-
     # Auto-colour projects
     lineages = @projects.values.map{ |h| h.keys }.flatten.uniq
     @colours = {}
